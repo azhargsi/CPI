@@ -9,184 +9,91 @@ include '../assets/conn/cek.php';
 <head>
 
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title></title>
-  <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet">
-  <link href="../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <!-- Favicons -->
+  <link href="../assets-user/img/favicon.png" rel="icon">
+  <link href="../assets-user/img/apple-touch-icon.png" rel="apple-touch-icon">
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../assets-user/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets-user/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets-user/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets-user/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets-user/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets-user/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../assets-user/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="../assets-user/css/style.css" rel="stylesheet">
 
 </head>
 
-<body id="page-top">
- <!-- Page Wrapper -->
- <div id="wrapper">
+<body>
 
-  <!-- Sidebar -->
-  <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center">
 
-    <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index">
-    </a>
+      <h1 class="logo me-auto"><a href="index.html">UDANG VANNAME</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
-
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
-      <a class="nav-link" href="index.php">
-        <i class="fas fa-fw fa-home"></i>
-        <span>Dashboard</span></a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-      <li class="nav-item">
-        <a class="nav-link" href="identifikasi.php">
-          <i class="fas fa-fw fa-stethoscope"></i>
-          <span>Identifikasi</span></a>
-      </li>
-
-      <hr class="sidebar-divider my-0">
-      <li class="nav-item">
-        <a class="nav-link" href="penyakit.php">
-          <i class="fas fa-fw fa-plus-circle"></i>
-          <span>Penyakit</span></a>
-      </li>
-
-      <hr class="sidebar-divider my-0">
-      <li class="nav-item">
-        <a class="nav-link" href="history.php">
-          <i class="fas fa-fw fa-history"></i>
-          <span>History</span></a>
-      </li>
-
-      <hr class="sidebar-divider my-0">
-      <li class="nav-item">
-        <a class="nav-link" href="tentang.php">
-          <i class="fas fa-info-circle"></i>
-          <span>Tentang</span></a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
-
-      <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
-    </ul>
-    <!-- End of Sidebar -->
-
-
-
-
-
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
-
-      <!-- Main Content -->
-      <div id="content">
-
-
-
-        <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-          <!-- Sidebar Toggle (Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-          </button>
-
-          <!-- Topbar Navbar -->
-          <ul class="navbar-nav ml-auto">
-            <div class="topbar-divider d-none d-sm-block"></div>
-      
-            <!-- Nav Item - User Information -->
-            <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <?php
-              $username=$_SESSION['username'];
-              $det=mysqli_query($conn,"select * from tb_akun where username='$username'");
-              while($d=mysqli_fetch_array($det)){
-                ?>
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $d['nama_lengkap'] ?></span>
-                <?php 
-              }
-              ?>
-              <span class="fa fa-user"><span>
-              </a>
-              <!-- Dropdown - User Information -->
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-              aria-labelledby="userDropdown">
-              <a class="dropdown-item" href="profil.php">
-                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                Akun
-              </a>
-
-
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                Logout
-              </a>
-            </div>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link   scrollto" href="#portfolio">Portfolio</a></li>
+          <li><a class="nav-link scrollto" href="#team">Team</a></li>
+          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Drop Down 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Drop Down 2</a></li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+            </ul>
           </li>
-
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
         </ul>
-
-      </nav>
-      <!-- End of Topbar -->
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
 
     </div>
-    <!-- End of Page Wrapper -->
+  </header><!-- End Header -->
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fas fa-angle-up"></i>
-    </a>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Logout ?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Anda akan keluar dari hak akses anda !!!</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="logout.php">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div>
 
-</body>
+
+
+
+<div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="../assets-user/vendor/aos/aos.js"></script>
+  <script src="../assets-user/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets-user/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets-user/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets-user/vendor/php-email-form/validate.js"></script>
+  <script src="../assets-user/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets-user/vendor/waypoints/noframework.waypoints.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../assets-user/js/main.js"></script>
+
+  </body>
 </html>
-
-
-<script src="../assets/vendor/jquery/jquery.min.js"></script>
-<script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-<script src="../assets/js/sb-admin-2.min.js"></script>
-<script src="../assets/vendor/chart.js/Chart.min.js"></script>
-
-<script src="../assets/js/demo/chart-area-demo.js"></script>
-<script src="../assets/js/demo/chart-pie-demo.js"></script>
-<script src="../assets/js/demo/chart-bar-demo.js"></script>
-
-
-
-<script src="../assets/vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="../assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-<script src="../assets/js/demo/datatables-demo.js"></script>
-
