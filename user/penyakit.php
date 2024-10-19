@@ -34,7 +34,6 @@ section {
 
         <div id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
 
-
         <div class="card shadow p-5 mb-5">
             <div class="card-header">
                 <h5 class="m-0 font-weight-bold text-primary">Penyakit Pada Pembesaran Udang Vanname</h5>
@@ -47,22 +46,36 @@ section {
 
                 // Tampilkan data penyakit jika tersedia
                 if (mysqli_num_rows($data) > 0) {
-                    while ($row = mysqli_fetch_assoc($data)) {
-                        echo "<h6 class='m-0 font-weight-bold text-dark'>" . $row['nama_penyakit'] . "</h6>";
-                        echo "<p><strong>Keterangan:</strong> " . $row['keterangan'] . "</p>";
-                        echo "<p><strong>Pengendalian:</strong> " . $row['pengendalian'] . "</p>";
-                        echo "<hr>";
-                    }
-                } else {
-                    echo "<p>Tidak ada data penyakit yang tersedia.</p>";
-                }
-                ?>
+                    while ($row = mysqli_fetch_assoc($data)) { 
+                        $idPenyakit = $row['id_penyakit'];
+                        ?>
+                        <h6 class='m-0 font-weight-bold text-dark'><?= $row['nama_penyakit'] ?></h6>
+                        <p><strong>Keterangan:</strong> <?= $row['keterangan'] ?></p>
+                        <p class="mb-0"><strong>Gejala:</strong></p>
+                        <?php 
+                            $det = mysqli_query($conn, "SELECT p.id_penyakit, p.nama_penyakit, p.keterangan, p.pengendalian, g.id_gejala, g.nama_gejala, g.nilai_gejala FROM tb_aturan a LEFT JOIN tb_gejala g ON a.id_gejala = g.id_gejala LEFT JOIN tb_penyakit p ON a.id_penyakit = p.id_penyakit WHERE a.id_penyakit = $idPenyakit");
+                            if (mysqli_num_rows($det) > 0) { ?>
+                                <ul>
+                                    <?php while ($row2 = mysqli_fetch_assoc($det)) { ?>
+                                        <li> <?= $row2['nama_gejala'] ?></li>
+                                    <?php } ?>
+                                </ul>
+                            <?php } else { ?>
+                                <p><strong>Tidak ada gejala</strong></p>
+                            <?php } ?>
+                            <p><strong>Pengendalian:</strong> <?= $row['pengendalian'] ?></p>
+                        <hr>   
+                <?php }
+                } else { ?>
+                    <p>Tidak ada data penyakit yang tersedia.</p>
+                <?php } ?>
             </div>
         </div>
 
         </div>
     </div>
 </section>
+
 <?php
 include 'footer.php';
 ?>

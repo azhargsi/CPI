@@ -26,9 +26,7 @@ include '../assets/conn/cek.php';
   <link href="../assets-user/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="../assets-user/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="../assets-user/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet">
-  <link href="../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+ 
 
   <!-- Template Main CSS File -->
   <link href="../assets-user/css/style.css" rel="stylesheet">
@@ -74,8 +72,13 @@ include '../assets/conn/cek.php';
           </li>
         </ul>
           
-      <!-- End of Sidebar -->
-        
+        <!-- End of Sidebar -->
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -95,14 +98,6 @@ include '../assets/conn/cek.php';
       </div>
     </div>
 
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-
-    </div>
-  </header><!-- End Header -->
-
-
 <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
@@ -114,7 +109,7 @@ include '../assets/conn/cek.php';
   <script src="../assets-user/vendor/php-email-form/validate.js"></script>
   <script src="../assets-user/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="../assets-user/vendor/waypoints/noframework.waypoints.js"></script>
-
+    
   <!-- Template Main JS File -->
   <script src="../assets-user/js/main.js"></script>
 

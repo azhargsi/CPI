@@ -19,7 +19,7 @@ section {
         <div class="section-title">
         </div>
 
-        <div id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
+        <div id="portfolio-flters" data-aos="fade-up" data-aos-delay="100">
         
         <div class="card shadow p-5 mb-5">
             <div class = "card-header">
