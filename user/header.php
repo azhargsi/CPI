@@ -26,6 +26,9 @@ include '../assets/conn/cek.php';
   <link href="../assets-user/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="../assets-user/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="../assets-user/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="../assets-user/css/style.css" rel="stylesheet">
@@ -35,49 +38,69 @@ include '../assets/conn/cek.php';
 <body>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top ">
+  <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="index.html">UDANG VANNAME</a></h1>
+      <h1 class="logo me-auto"><a href="index.php">UDANG VANNAME</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link   scrollto" href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+          <li><a class="nav-link scrollto" href="index.php">Dashboard</a></li>
+          <li><a class="nav-link scrollto" href="identifikasi.php">Identifikasi</a></li>
+          <li><a class="nav-link scrollto" href="penyakit.php">Penyakit</a></li>
+          <li><a class="nav-link scrollto" href="history.php">History</a></li>
+          <li><a class="nav-link scrollto" href="tentang.php">Tentang</a></li>
+          <li class="dropdown" data-toggle="dropdown" >
+            <a href="#">
+              <span>
+                <?php
+                $username=$_SESSION['username'];
+                $det=mysqli_query($conn,"select * from tb_akun where username='$username'");
+                while($d=mysqli_fetch_array($det)){
+                  ?>
+                  <span><?php echo $d['nama_lengkap'] ?></span>
+                  <?php 
+                }
+                ?>
+              </span>
+              <i class="bi bi-person"></i>
+            </a>
             <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
+              <li><a href="profil.php">Akun</a></li>
+              <li><a href="#" data-toggle="modal" data-target="#logoutModal">Logout</a></li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
         </ul>
+          
+      <!-- End of Sidebar -->
+        
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Logout ?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Anda akan keluar dari hak akses anda !!!</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="logout.php">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
+
     </div>
   </header><!-- End Header -->
-
-
-
-
 
 
 <div id="preloader"></div>

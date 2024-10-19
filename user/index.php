@@ -18,14 +18,13 @@ include 'header.php';
           <h1>SISTEM PAKAR</h1>
           <h2>Identifikasi Penyakit Pada Pembesaran Udang Vanname</h2>
           <div class="d-flex justify-content-center justify-content-lg-start">
-            <a href="#about" class="btn-get-started scrollto">Get Started</a>
-            <a href="#" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>DIAGNOSA SEKARANGS</span></a>
+            <a href="#about" class="btn-get-started scrollto">Diagnosa Sekarang</a>
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
           <img src="../assets-user/img/hero-img.png" class="img-fluid animated" alt="">
         </div>
       </div>
-    </div>
+    </div
 
   </section><!-- End Hero -->

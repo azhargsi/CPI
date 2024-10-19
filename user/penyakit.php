@@ -16,33 +16,53 @@ if (isset($_GET['aksi'])) {
 }
 ?>
 
-<div class="container">
-    <div class="card shadow p-5 mb-5">
-        <div class="card-header">
-            <h5 class="m-0 font-weight-bold text-primary">Penyakit Pada Pembesaran Udang Vanname</h5>
+<style scoped>
+#header {
+    background: rgba(40, 58, 90, 0.9);
+}
+section {
+    padding: 0;
+    padding-top: 100px;
+}
+</style>
+
+<section id="portfolio" class="portfolio">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
         </div>
 
-        <div class="card-body">
-            <?php
-            // Query untuk mendapatkan semua data penyakit
-            $data = mysqli_query($conn, "SELECT * FROM tb_penyakit ORDER BY id_penyakit");
+        <div id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
 
-            // Tampilkan data penyakit jika tersedia
-            if (mysqli_num_rows($data) > 0) {
-                while ($row = mysqli_fetch_assoc($data)) {
-                    echo "<h6 class='m-0 font-weight-bold text-dark'>" . $row['nama_penyakit'] . "</h6>";
-                    echo "<p><strong>Keterangan:</strong> " . $row['keterangan'] . "</p>";
-                    echo "<p><strong>Pengendalian:</strong> " . $row['pengendalian'] . "</p>";
-                    echo "<hr>";
+
+        <div class="card shadow p-5 mb-5">
+            <div class="card-header">
+                <h5 class="m-0 font-weight-bold text-primary">Penyakit Pada Pembesaran Udang Vanname</h5>
+            </div>
+
+            <div class="card-body">
+                <?php
+                // Query untuk mendapatkan semua data penyakit
+                $data = mysqli_query($conn, "SELECT * FROM tb_penyakit ORDER BY id_penyakit");
+
+                // Tampilkan data penyakit jika tersedia
+                if (mysqli_num_rows($data) > 0) {
+                    while ($row = mysqli_fetch_assoc($data)) {
+                        echo "<h6 class='m-0 font-weight-bold text-dark'>" . $row['nama_penyakit'] . "</h6>";
+                        echo "<p><strong>Keterangan:</strong> " . $row['keterangan'] . "</p>";
+                        echo "<p><strong>Pengendalian:</strong> " . $row['pengendalian'] . "</p>";
+                        echo "<hr>";
+                    }
+                } else {
+                    echo "<p>Tidak ada data penyakit yang tersedia.</p>";
                 }
-            } else {
-                echo "<p>Tidak ada data penyakit yang tersedia.</p>";
-            }
-            ?>
+                ?>
+            </div>
+        </div>
+
         </div>
     </div>
-</div>
-
+</section>
 <?php
 include 'footer.php';
 ?>

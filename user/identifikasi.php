@@ -61,29 +61,46 @@ $p = mysqli_fetch_array($pass);
 $id_akun = $p['id_akun'];
 ?>
 
-<div class="container">
-	<div class="card shadow p-5 mb-5">
-        <?php if (empty($_GET['no_regidentifikasi'])){?>
+<style scoped>
+#header {
+    background: rgba(40, 58, 90, 0.9);
+}
+section {
+    padding: 0;
+    padding-top: 100px;
+}
+</style>
 
-		<div class = "card-header">
-            <h5 class= "m-0 font-weight-bold text-primary">Identifikasi</h5>
+<section id="portfolio" class="portfolio">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
         </div>
-            <?php }else{}?>
+
+        <div id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="card shadow p-5 mb-5">
+                <?php if (empty($_GET['no_regidentifikasi'])){?>
+
+                <div class="card-header">
+                    <h5 class="m-0 font-weight-bold text-primary">Identifikasi</h5>
+                </div>
+                <?php }else{}?>
 
 
 
-        <?php if (empty($_GET['no_regidentifikasi'])){?>
+                <?php if (empty($_GET['no_regidentifikasi'])){?>
 
-        <div class="card-body">
-            <form action="identifikasi.php?aksi=identifikasi" method="POST" enctype="multipart/form-data">
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <tr>
-                            <th class="text-center">No</th>
-                            <th class="text-center">Gejala</th>
-                            <th class="text-center">Pilih</th>
-                        </tr>
-                <?php
+                <div class="card-body">
+                    <form action="identifikasi.php?aksi=identifikasi" method="POST" enctype="multipart/form-data">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th class="text-center">No</th>
+                                    <th class="text-center">Gejala</th>
+                                    <th class="text-center">Pilih</th>
+                                </tr>
+                                <?php
                 $data = mysqli_query($conn,"SELECT * FROM tb_gejala ORDER BY id_gejala");
                 $i=0;
                 while($a=mysqli_fetch_array($data)){
@@ -108,35 +125,35 @@ $id_akun = $p['id_akun'];
                     ";
                 }
                 ?>
-                
-                    </table>
+
+                            </table>
+                        </div>
+                        <input type="hidden" name="id_akun" value="<?= $id_akun ?>">
+                        <a href="index.php" class="btn btn-secondary">Batal</a>
+                        <input type="submit" value="Proses Identifikasi" class="btn btn-primary">
+                    </form>
                 </div>
-                    <input type="hidden" name="id_akun" value="<?= $id_akun ?>">
-                    <a href="index.php" class="btn btn-secondary">Batal</a>
-                    <input type="submit" value="Proses Identifikasi" class="btn btn-primary">
-            </form>
-        </div>
-        <br>
-        <br>
+                <br>
+                <br>
 
-        <?php }else{?>
+                <?php }else{?>
 
-        <center>
-            <h2 class="m-0 font-weight-bold text-primary"> Hasil Analisa Metode Certainty Factor</h2>
-        </center>
-        <hr class="font-weight-bold text-primary">Rules</h5>
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <tr>
-                    <th class="text-center">No</th>
-                    <th class="text-center">Penyakit</th>
-                    <th class="text-center">Gejala</th>
-                    <th class="text-center">CF Pakar</th>
-                    <th class="text-center">CF User</th>
-                    <th class="text-center">Nilai CF</th>
-                    
-                </tr>
-                <?php
+                <center>
+                    <h2 class="m-0 font-weight-bold text-primary"> Hasil Analisa Metode Certainty Factor</h2>
+                </center>
+                <hr class="font-weight-bold text-primary">Rules</h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th class="text-center">No</th>
+                            <th class="text-center">Penyakit</th>
+                            <th class="text-center">Gejala</th>
+                            <th class="text-center">CF Pakar</th>
+                            <th class="text-center">CF User</th>
+                            <th class="text-center">Nilai CF</th>
+
+                        </tr>
+                        <?php
                 $sql = mysqli_query($conn,"SELECT * FROM tb_penyakit p, tb_gejala g, tb_identifikasi i, 
                 tb_aturan a WHERE g.id_gejala=i.id_gejala AND g.id_gejala=a.id_gejala AND 
                 p.id_penyakit=a.id_penyakit AND i.id_akun='$id_akun' AND i.no_regidentifikasi='$_GET[no_regidentifikasi]' 
@@ -159,15 +176,14 @@ $id_akun = $p['id_akun'];
                 }
                 ?>
 
-            </table> 
-        </div>
-        <br>
-        <br>
+                    </table>
+                </div>
+                <br>
 
-        <div class="border p-3">
-            <h5 class="font-weight-bold text primary">Detail Perhitungan </h5>
-            <h6>
-                <?php
+                <div class="border p-3">
+                    <h5 class="font-weight-bold text primary">Detail Perhitungan </h5>
+                    <h6>
+                        <?php
                 $highestPersentage = 0;
                 $penyakitTerbesar = "";
                 $data = mysqli_query($conn,"SELECT * FROM tb_penyakit ORDER BY id_penyakit");
@@ -232,14 +248,14 @@ $id_akun = $p['id_akun'];
             //$pembulatan = number_format($highestPersentage,2);
             
                 ?>
-            </h6>
-        </div>
+                    </h6>
+                </div>
 
-        <br>
-        <div class="border p-3">
-            <h5 class="font-weight-bold text primary">Keterangan</h5>
-            <h6>
-            <?php
+                <br>
+                <div class="border p-3">
+                    <h5 class="font-weight-bold text primary">Keterangan</h5>
+                    <h6>
+                        <?php
             $data = mysqli_query($conn,"SELECT * FROM tb_penyakit WHERE nama_penyakit='$penyakitTerbesar'");
             $a=mysqli_fetch_array($data);
             echo "
@@ -248,14 +264,14 @@ $id_akun = $p['id_akun'];
             </div>
             ";
                 ?>
-            </h6>
-        </div>
-  
-        <br>
-        <div class="border p-3">
-            <h5 class="font-weight-bold text primary">Pengendalian</h5>
-            <h6>
-            <?php
+                    </h6>
+                </div>
+
+                <br>
+                <div class="border p-3">
+                    <h5 class="font-weight-bold text primary">Pengendalian</h5>
+                    <h6>
+                        <?php
             $data = mysqli_query($conn,"SELECT * FROM tb_penyakit WHERE nama_penyakit='$penyakitTerbesar'");
             $a=mysqli_fetch_array($data);
             echo "
@@ -264,14 +280,14 @@ $id_akun = $p['id_akun'];
             </div>
             ";
                 ?>
-            </h6>
-    </div>
-    <br>
+                    </h6>
+                </div>
+                <br>
 
-    <div class="border p-3">
-            <h5 class="font-weight-bold text primary">Kesimpulan</h5>
-            <h6>
-            <?php
+                <div class="border p-3">
+                    <h5 class="font-weight-bold text primary">Kesimpulan</h5>
+                    <h6>
+                        <?php
             
             echo "
             <div class='text-justify'>
@@ -280,27 +296,30 @@ $id_akun = $p['id_akun'];
             </div>
             ";
                 ?>
-            </h6>
-    </div>
-    <br>
-    <hr>
+                    </h6>
+                </div>
+                <br>
+                <hr>
 
-    <form action="identifikasi.php?aksi=simpan" method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="id_akun" value="<?= $id_akun ?>">
-        <input type="hidden" name="no_regidentifikasi" value="<?= $_GET['no_regidentifikasi'] ?>">
-        <input type="hidden" name="penyakit_cf" value="<?= $penyakitTerbesar ?>">
-        <input type="hidden" name="nilai_cf" value="<?= $highestPersentage ?>">
-        
-        <div class='text-left'>
-            <a href="identifikasi.php" class="btn btn-secondary"><span class="fa fa-reply">&emsp; Identifikasi Ulang</span></a>
-            <input type="submit" class="btn btn-primary" value="Simpan Hasil Identifikasi">
+                <form action="identifikasi.php?aksi=simpan" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="id_akun" value="<?= $id_akun ?>">
+                    <input type="hidden" name="no_regidentifikasi" value="<?= $_GET['no_regidentifikasi'] ?>">
+                    <input type="hidden" name="penyakit_cf" value="<?= $penyakitTerbesar ?>">
+                    <input type="hidden" name="nilai_cf" value="<?= $highestPersentage ?>">
+
+                    <div class='text-left'>
+                        <a href="identifikasi.php" class="btn btn-secondary"><span class="fa fa-reply">&emsp;
+                                Identifikasi Ulang</span></a>
+                        <input type="submit" class="btn btn-primary" value="Simpan Hasil Identifikasi">
+                    </div>
+                </form>
+
+                <?php } //endpengecheckan no regidentifika
+                ?>
+            </div>
         </div>
-    </form>
-    
-    <?php } //endpengecheckan no regidentifikasi
-    ?>
-</div>
-</div>
+    </div>
+</section>
 
 <?php
 include 'footer.php';
