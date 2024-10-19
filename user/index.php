@@ -4,9 +4,8 @@ include 'header.php';
 
 <style scoped>
 #hero {
-    
     height: 100vh;
-    }
+  }
 </style>
 
   <!-- ======= Hero Section ======= -->

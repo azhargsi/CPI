@@ -63,7 +63,7 @@ $id_akun = $p['id_akun'];
 
 <style scoped>
 #header {
-    background: rgba(40, 58, 90, 0.9);
+    background: #37517E;
 }
 section {
     padding: 0;

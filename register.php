@@ -19,8 +19,6 @@ if (isset($_GET['aksi'])) {
         //in data user
         mysqli_query($conn,"INSERT INTO tb_user(id_akun,nama_lengkap,jenis_kelamin,umur) VALUES ('$a[id_akun]','$nama_lengkap','$jenis_kelamin','$umur')");
        
-        
-
         header("location:index.php?pesan=berhasil");
     }
 }

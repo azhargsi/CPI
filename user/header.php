@@ -27,9 +27,12 @@ include '../assets/conn/cek.php';
   <link href="../assets-user/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="../assets-user/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
  
-
   <!-- Template Main CSS File -->
   <link href="../assets-user/css/style.css" rel="stylesheet">
+    
+  <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -109,9 +112,21 @@ include '../assets/conn/cek.php';
   <script src="../assets-user/vendor/php-email-form/validate.js"></script>
   <script src="../assets-user/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="../assets-user/vendor/waypoints/noframework.waypoints.js"></script>
-    
+
   <!-- Template Main JS File -->
   <script src="../assets-user/js/main.js"></script>
+
+  <script src="../assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../assets/js/sb-admin-2.min.js"></script>
+  <script src="../assets/vendor/chart.js/Chart.min.js"></script>
+  <script src="../assets/js/demo/chart-area-demo.js"></script>
+  <script src="../assets/js/demo/chart-pie-demo.js"></script>
+  <script src="../assets/js/demo/chart-bar-demo.js"></script>
+  <script src="../assets/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="../assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+  <script src="../assets/js/demo/datatables-demo.js"></script>
 
   </body>
 </html>
